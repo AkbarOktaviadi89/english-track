@@ -323,13 +323,12 @@ function PhrasePanel({ task }: { task: PlanTask }) {
 
 function GenericPanel({ task }: { task: PlanTask }) {
   const ICONS: Record<string, string> = {
-    vocabulary: '📝', practice: '⏱️', writing: '✍️', review: '🔄',
+    vocabulary: '📝', practice: '⏱️', writing: '✍️',
   }
   const DESCRIPTIONS: Record<string, string> = {
     vocabulary: 'Tambah kata baru yang kamu temui dan mark mastered setelah ingat.',
     practice:   'Catat sesi belajar kamu — kategori, skill, durasi, dan catatan.',
     writing:    'Tulis dan submit teks ke AI untuk mendapat feedback langsung.',
-    review:     'Review kosakata yang sudah disimpan dengan sistem spaced repetition.',
   }
 
   return (
@@ -404,7 +403,7 @@ export default function StudyTaskPanel({ task, planColor, isDone, onClose, onTog
           {task.type === 'grammar'    && <GrammarPanel task={task} />}
           {task.type === 'material'   && <MaterialsPanel task={task} />}
           {task.type === 'phrase'     && <PhrasePanel task={task} />}
-          {(task.type === 'vocabulary' || task.type === 'practice' || task.type === 'writing' || task.type === 'review') && (
+          {(task.type === 'vocabulary' || task.type === 'practice' || task.type === 'writing') && (
             <GenericPanel task={task} />
           )}
         </div>
