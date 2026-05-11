@@ -59,6 +59,7 @@ const NAV_SECTIONS: NavSection[] = [
     items: [
       { href: '/dashboard/review',            label: 'Vocab Review', icon: RotateCcw      },
       { href: '/dashboard/cloze',             label: 'Cloze Tests',  icon: ClipboardList  },
+      { href: '/dashboard/reading',           label: 'Reading',      icon: BookOpen       },
       { href: '/dashboard/speaking-practice', label: 'Speaking',     icon: Mic            },
       { href: '/dashboard/writing',           label: 'AI Writing',    icon: PenLine   },
       { href: '/dashboard/writing-samples',   label: 'Model Essays',  icon: FileText  },
