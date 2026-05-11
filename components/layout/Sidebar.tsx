@@ -60,6 +60,7 @@ const NAV_SECTIONS: NavSection[] = [
     label: 'Practice',
     items: [
       { href: '/dashboard/review',            label: 'Vocab Review', icon: RotateCcw      },
+      { href: '/dashboard/listening',           label: 'Listening',    icon: Headphones     },
       { href: '/dashboard/cloze',             label: 'Cloze Tests',  icon: ClipboardList  },
       { href: '/dashboard/reading',                  label: 'Reading',            icon: BookOpen    },
       { href: '/dashboard/sentence-transformation', label: 'Sentence Transform', icon: RefreshCw   },
