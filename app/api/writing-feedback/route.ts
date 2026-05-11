@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 
-export const runtime = 'edge'
-
 const SYSTEM_PROMPT = `You are an expert English writing tutor specialising in IELTS, TOEFL, and academic English. Analyse the student's writing and return ONLY a valid JSON object (no markdown, no explanation outside JSON) in this exact format:
 
 {

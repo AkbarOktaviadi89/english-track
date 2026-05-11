@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import {
   LayoutDashboard, Map, BookOpen, Activity,
   TrendingUp, Headphones, BookMarked, Library, RotateCcw,
-  MessageSquareText, GraduationCap, PenLine, CalendarDays, ListChecks, Sparkles, Mic
+  MessageSquareText, GraduationCap, PenLine, CalendarDays, ListChecks, Sparkles, Mic, FileText
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { UserProfile } from '@/types'
@@ -24,7 +24,8 @@ const NAV = [
   { href: '/dashboard/phrases',     label: 'Phrase Bank',  icon: MessageSquareText  },
   { href: '/dashboard/review',     label: 'Vocab Review',  icon: RotateCcw          },
   { href: '/dashboard/grammar',    label: 'Grammar Ref',   icon: GraduationCap      },
-  { href: '/dashboard/writing',    label: 'AI Writing',    icon: PenLine            },
+  { href: '/dashboard/writing',         label: 'AI Writing',    icon: PenLine   },
+  { href: '/dashboard/writing-samples', label: 'Model Essays',  icon: FileText  },
   { href: '/dashboard/practice',   label: 'Log Session',   icon: Headphones         },
   { href: '/dashboard/progress',   label: 'Progress',      icon: Activity           },
 ]

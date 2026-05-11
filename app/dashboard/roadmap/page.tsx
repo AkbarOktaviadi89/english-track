@@ -49,8 +49,8 @@ export default async function RoadmapPage() {
           const isCurrent = level === currentLevel
           const pct = Math.round((done / total) * 100)
           return (
-            <div key={level} className={`card p-3 text-center relative ${isCurrent ? 'ring-2' : ''}`}
-              style={isCurrent ? { ringColor: meta.color } : {}}>
+            <div key={level} className="card p-3 text-center relative"
+              style={isCurrent ? { outline: `2px solid ${meta.color}`, outlineOffset: '2px' } : {}}>
               {isCurrent && (
                 <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-xs font-medium px-2 py-0.5 rounded-full text-white"
                   style={{ backgroundColor: meta.color }}>

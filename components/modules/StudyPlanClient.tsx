@@ -188,8 +188,8 @@ export default function StudyPlanClient({ plans, recommendedPlanId, progressMap,
 
           return (
             <div key={week.week}
-              className={cn('card overflow-hidden transition-all', isCurrent && 'ring-2')}
-              style={isCurrent ? { ringColor: plan.color } : {}}>
+              className="card overflow-hidden transition-all"
+              style={isCurrent ? { outline: `2px solid ${plan.color}`, outlineOffset: '2px' } : {}}>
 
               {/* Week header */}
               <button
