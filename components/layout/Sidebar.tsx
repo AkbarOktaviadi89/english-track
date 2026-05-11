@@ -4,11 +4,11 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { LucideIcon } from 'lucide-react'
 import {
-  LayoutDashboard, CalendarDays,
+  LayoutDashboard, CalendarDays, Zap,
   Map, BookOpen, Library, GraduationCap,
-  ListChecks, BookMarked, Sparkles, MessageSquareText,
-  RotateCcw, Mic, PenLine, FileText,
-  Headphones, Activity, ClipboardList, Link2,
+  ListChecks, BookMarked, Sparkles, MessageSquareText, Link2,
+  RotateCcw, Mic, PenLine, FileText, ClipboardList,
+  Headphones, Activity,
   TrendingUp,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -30,8 +30,9 @@ const NAV_SECTIONS: NavSection[] = [
   {
     label: 'Overview',
     items: [
-      { href: '/dashboard',            label: 'Dashboard',   icon: LayoutDashboard },
-      { href: '/dashboard/study-plan', label: 'Study Plan',  icon: CalendarDays    },
+      { href: '/dashboard',            label: 'Dashboard',        icon: LayoutDashboard },
+      { href: '/dashboard/challenge',  label: 'Daily Challenge',  icon: Zap             },
+      { href: '/dashboard/study-plan', label: 'Study Plan',       icon: CalendarDays    },
     ],
   },
   {

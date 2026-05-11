@@ -2,11 +2,12 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import {
   Flame, Clock, Target, BookOpen,
-  TrendingUp, ChevronRight, Zap, Calendar, Bell
+  TrendingUp, ChevronRight, Zap, Calendar, Bell, Star
 } from 'lucide-react'
 import Link from 'next/link'
 import { CEFR_META, SKILL_META } from '@/types'
 import type { CEFRLevel, Skill } from '@/types'
+import { getTodayChallenge, CHALLENGE_TYPE_META } from '@/lib/daily-challenge'
 
 export default async function DashboardPage() {
   const supabase = createClient()
@@ -59,6 +60,16 @@ export default async function DashboardPage() {
 
   const firstName = profile?.full_name?.split(' ')[0] ?? ''
 
+  // Daily challenge
+  const todayChallenge = getTodayChallenge(today)
+  const challengeMeta = CHALLENGE_TYPE_META[todayChallenge.type]
+  const { data: challengeCompletion } = await supabase
+    .from('daily_completions')
+    .select('completed, score')
+    .eq('user_id', user.id)
+    .eq('date', today)
+    .single()
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -83,6 +94,29 @@ export default async function DashboardPage() {
           <ChevronRight className="w-4 h-4 flex-shrink-0 opacity-50" />
         </Link>
       )}
+
+      {/* Daily Challenge widget */}
+      <Link href="/dashboard/challenge"
+        className="flex items-center gap-4 card p-4 hover:shadow-card transition-all group">
+        <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 text-xl"
+          style={{ backgroundColor: challengeMeta.color + '18' }}>
+          {challengeMeta.emoji}
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-0.5">
+            <p className="text-sm font-semibold text-surface-900">{challengeMeta.label}</p>
+            {challengeCompletion?.completed
+              ? <span className="badge text-xs bg-brand-50 text-brand-700">✓ Done</span>
+              : <span className="badge text-xs" style={{ backgroundColor: challengeMeta.color + '15', color: challengeMeta.color }}>Today</span>}
+          </div>
+          <p className="text-xs text-surface-500">{challengeMeta.description}</p>
+        </div>
+        <div className="flex items-center gap-1 text-surface-400 group-hover:text-brand-600 transition-colors flex-shrink-0">
+          {challengeCompletion?.completed
+            ? <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
+            : <ChevronRight className="w-5 h-5" />}
+        </div>
+      </Link>
 
       {/* Daily goal */}
       <div className="card p-5">

@@ -100,6 +100,22 @@ alter table public.vocabulary enable row level security;
 create policy "Users can manage own vocabulary" on public.vocabulary
   for all using (auth.uid() = user_id);
 
+-- ─── Daily Completions ──────────────────────────────────────
+create table if not exists public.daily_completions (
+  id             uuid primary key default uuid_generate_v4(),
+  user_id        uuid references public.profiles(id) on delete cascade not null,
+  date           date not null default current_date,
+  challenge_type text not null,
+  score          int not null default 0,
+  completed      boolean not null default false,
+  created_at     timestamptz not null default now(),
+  unique(user_id, date)
+);
+
+alter table public.daily_completions enable row level security;
+create policy "Users can manage own completions" on public.daily_completions
+  for all using (auth.uid() = user_id);
+
 -- ─── Study Plan Progress ────────────────────────────────────
 create table if not exists public.study_plan_progress (
   id           uuid primary key default uuid_generate_v4(),
