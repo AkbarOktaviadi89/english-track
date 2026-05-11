@@ -8,7 +8,7 @@ import {
   Map, BookOpen, Library, GraduationCap,
   ListChecks, BookMarked, Sparkles, MessageSquareText,
   RotateCcw, Mic, PenLine, FileText,
-  Headphones, Activity,
+  Headphones, Activity, ClipboardList,
   TrendingUp,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -55,8 +55,9 @@ const NAV_SECTIONS: NavSection[] = [
   {
     label: 'Practice',
     items: [
-      { href: '/dashboard/review',           label: 'Vocab Review',  icon: RotateCcw },
-      { href: '/dashboard/speaking-practice', label: 'Speaking',      icon: Mic       },
+      { href: '/dashboard/review',            label: 'Vocab Review', icon: RotateCcw      },
+      { href: '/dashboard/cloze',             label: 'Cloze Tests',  icon: ClipboardList  },
+      { href: '/dashboard/speaking-practice', label: 'Speaking',     icon: Mic            },
       { href: '/dashboard/writing',           label: 'AI Writing',    icon: PenLine   },
       { href: '/dashboard/writing-samples',   label: 'Model Essays',  icon: FileText  },
     ],
