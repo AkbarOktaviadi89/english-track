@@ -43,7 +43,7 @@ export default function IELTSVocabClient({ topics, savedWords: initialSaved, use
 
   async function saveWord(word: IELTSWord) {
     if (saved.has(word.word.toLowerCase())) return
-    setSaved(prev => new Set([...prev, word.word.toLowerCase()]))
+    setSaved(prev => new Set([...Array.from(prev), word.word.toLowerCase()]))
     startTransition(async () => {
       const { error } = await supabase.from('vocabulary').insert({
         user_id: userId,
@@ -79,7 +79,7 @@ export default function IELTSVocabClient({ topics, savedWords: initialSaved, use
       }))
       const { error } = await supabase.from('vocabulary').upsert(rows, { onConflict: 'user_id,word', ignoreDuplicates: true })
       if (error) throw error
-      setSaved(prev => new Set([...prev, ...toImport.map(w => w.word.toLowerCase())]))
+      setSaved(prev => new Set([...Array.from(prev), ...toImport.map(w => w.word.toLowerCase())]))
       toast.success(`${toImport.length} words added to Vocabulary!`)
     } catch {
       toast.error('Import failed — please try again')

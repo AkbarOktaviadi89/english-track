@@ -47,7 +47,7 @@ export default function IdiomsClient({ savedPhrases: initialSaved, userId }: Pro
 
   async function saveToPhaseBank(phrase: string, meaning: string, example: string, level: CEFRLevel) {
     if (saved.has(phrase.toLowerCase())) { toast('Already in Phrase Bank', { icon: '✓' }); return }
-    setSaved(prev => new Set([...prev, phrase.toLowerCase()]))
+    setSaved(prev => new Set([...Array.from(prev), phrase.toLowerCase()]))
     startTransition(async () => {
       const { error } = await supabase.from('phrases').insert({
         user_id: userId,
