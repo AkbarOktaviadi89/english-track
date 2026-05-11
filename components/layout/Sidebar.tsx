@@ -8,7 +8,7 @@ import {
   Map, BookOpen, Library, GraduationCap,
   ListChecks, BookMarked, Sparkles, MessageSquareText,
   RotateCcw, Mic, PenLine, FileText,
-  Headphones, Activity, ClipboardList,
+  Headphones, Activity, ClipboardList, Link2,
   TrendingUp,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -48,7 +48,8 @@ const NAV_SECTIONS: NavSection[] = [
     items: [
       { href: '/dashboard/ielts-vocab', label: 'IELTS Vocab',   icon: ListChecks       },
       { href: '/dashboard/vocabulary',  label: 'My Words',       icon: BookMarked       },
-      { href: '/dashboard/idioms',      label: 'Idioms & PVs',   icon: Sparkles         },
+      { href: '/dashboard/idioms',        label: 'Idioms & PVs',  icon: Sparkles  },
+      { href: '/dashboard/collocations', label: 'Collocations',  icon: Link2     },
       { href: '/dashboard/phrases',     label: 'Phrase Bank',    icon: MessageSquareText },
     ],
   },
