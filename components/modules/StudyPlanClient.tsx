@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useTransition } from 'react'
-import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import type { StudyPlan, PlanTask, TaskType } from '@/lib/study-plans'
 import { CEFR_META, SKILL_META } from '@/types'
@@ -13,6 +12,7 @@ import {
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import toast from 'react-hot-toast'
+import StudyTaskPanel from '@/components/modules/StudyTaskPanel'
 
 interface Props {
   plans: StudyPlan[]
@@ -45,6 +45,7 @@ export default function StudyPlanClient({ plans, recommendedPlanId, progressMap,
   const [activePlanId, setActivePlanId] = useState(recommendedPlanId)
   const [progress, setProgress] = useState(progressMap)
   const [expandedWeeks, setExpandedWeeks] = useState<Record<number, boolean>>({ 1: true })
+  const [activeTask, setActiveTask] = useState<PlanTask | null>(null)
   const [, startTransition] = useTransition()
   const supabase = createClient()
 
@@ -269,11 +270,12 @@ export default function StudyPlanClient({ plans, recommendedPlanId, progressMap,
                             <p className="text-xs text-surface-500 mt-0.5 leading-snug">{task.description}</p>
                           </div>
 
-                          {/* Open link */}
-                          <Link href={task.link}
+                          {/* Open panel button */}
+                          <button
+                            onClick={() => setActiveTask(task)}
                             className="flex-shrink-0 px-2.5 py-1.5 rounded-lg text-xs font-medium border border-surface-200 text-surface-600 hover:border-brand-300 hover:text-brand-600 hover:bg-brand-50 transition-all">
-                            Open →
-                          </Link>
+                            Buka →
+                          </button>
                         </div>
                       )
                     })}
@@ -284,6 +286,19 @@ export default function StudyPlanClient({ plans, recommendedPlanId, progressMap,
           )
         })}
       </div>
+
+      {/* Task panel */}
+      {activeTask && (
+        <StudyTaskPanel
+          task={activeTask}
+          planColor={plan.color}
+          isDone={!!(progress[plan.id]?.[activeTask.id])}
+          onClose={() => setActiveTask(null)}
+          onToggleDone={() => {
+            toggleTask(activeTask)
+          }}
+        />
+      )}
     </div>
   )
 }
