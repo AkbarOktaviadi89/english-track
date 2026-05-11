@@ -41,13 +41,12 @@ function useTTS() {
     onEnd: () => void,
     onProgress?: (lineIdx: number) => void,
   ) => {
-    const synth = synthRef.current
-    if (!synth) return
+    if (!synthRef.current) return
+    const synth: SpeechSynthesis = synthRef.current
 
     synth.cancel()
     setSpeaking(true)
 
-    let lineIdx = 0
     const lines = track.script
 
     function speakLine(idx: number) {
