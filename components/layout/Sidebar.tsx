@@ -38,10 +38,11 @@ const NAV_SECTIONS: NavSection[] = [
   {
     label: 'Learn',
     items: [
-      { href: '/dashboard/roadmap',   label: 'Roadmap',        icon: Map            },
-      { href: '/dashboard/lessons',   label: 'Test Curricula', icon: BookOpen       },
-      { href: '/dashboard/materials', label: 'Materials',      icon: Library        },
-      { href: '/dashboard/grammar',   label: 'Grammar Ref',    icon: GraduationCap  },
+      { href: '/dashboard/roadmap',        label: 'Roadmap',        icon: Map            },
+      { href: '/dashboard/lessons',        label: 'Test Curricula', icon: BookOpen       },
+      { href: '/dashboard/materials',      label: 'Materials',      icon: Library        },
+      { href: '/dashboard/grammar',        label: 'Grammar Ref',    icon: GraduationCap  },
+      { href: '/dashboard/exam-strategy',  label: 'Exam Strategy',  icon: Zap            },
     ],
   },
   {
