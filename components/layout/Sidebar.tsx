@@ -51,6 +51,7 @@ const NAV_SECTIONS: NavSection[] = [
       { href: '/dashboard/vocabulary',  label: 'My Words',       icon: BookMarked       },
       { href: '/dashboard/idioms',        label: 'Idioms & PVs',  icon: Sparkles  },
       { href: '/dashboard/collocations', label: 'Collocations',  icon: Link2     },
+      { href: '/dashboard/awl',          label: 'AWL Exercises', icon: GraduationCap },
       { href: '/dashboard/phrases',     label: 'Phrase Bank',    icon: MessageSquareText },
     ],
   },
