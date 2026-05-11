@@ -131,7 +131,7 @@ function buildGrammarChallenge(seed: number): GrammarChallenge {
   )
   const idx = Math.floor(rand() * allExercises.length)
   const ex = allExercises[idx]
-  const options = shuffle(ex.options, rand)
+  const options = shuffle(ex.options ?? [], rand)
   const answerIndex = options.indexOf(ex.answer)
   return {
     type: 'grammar',
