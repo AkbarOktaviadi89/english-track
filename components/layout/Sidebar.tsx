@@ -9,7 +9,7 @@ import {
   ListChecks, BookMarked, Sparkles, MessageSquareText, Link2,
   RotateCcw, Mic, PenLine, FileText, ClipboardList,
   Headphones, Activity,
-  TrendingUp, RefreshCw,
+  TrendingUp, RefreshCw, AlertTriangle,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { UserProfile } from '@/types'
@@ -61,6 +61,7 @@ const NAV_SECTIONS: NavSection[] = [
       { href: '/dashboard/cloze',             label: 'Cloze Tests',  icon: ClipboardList  },
       { href: '/dashboard/reading',                  label: 'Reading',            icon: BookOpen    },
       { href: '/dashboard/sentence-transformation', label: 'Sentence Transform', icon: RefreshCw   },
+      { href: '/dashboard/error-correction',        label: 'Error Correction',   icon: AlertTriangle },
       { href: '/dashboard/speaking-practice',       label: 'Speaking',           icon: Mic         },
       { href: '/dashboard/writing',           label: 'AI Writing',    icon: PenLine   },
       { href: '/dashboard/writing-samples',   label: 'Model Essays',  icon: FileText  },
